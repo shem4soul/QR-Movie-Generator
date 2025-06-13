@@ -8,7 +8,8 @@ async function bootstrap() {
     app.useStaticAssets((0, path_1.join)(__dirname, "..", "public"));
     app.setBaseViewsDir((0, path_1.join)(__dirname, "..", "views"));
     app.setViewEngine("ejs");
-    await app.listen(3000);
-    console.log(`App is running on http://localhost:3000`);
+    const PORT = process.env.PORT || 3000;
+    await app.listen(PORT);
+    console.log(`Server running on http://localhost:${PORT}`);
 }
 bootstrap();
