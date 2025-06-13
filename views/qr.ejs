@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scan QR Code</title>
+  </head>
+  <body>
+    <h1>Scan to View 10 Random Movies</h1>
+    <img src="<%= qrImage %>" alt="QR Code" />
+    <p>This link will change every 10 seconds.</p>
+    <script>
+      setTimeout(() => {
+        location.reload();
+      }, 10000);
+    </script>
+  </body>
+</html>

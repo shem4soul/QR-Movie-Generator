@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Movies</title>
+  </head>
+  <body>
+    <h1>Here are 10 Random Movies</h1>
+    <ul>
+      <% movies.forEach(movie => { %>
+        <li>
+          <h3><%= movie.title %></h3>
+          <img src="<%= movie.cover %>" alt="<%= movie.title %>" width="150" />
+        </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>
