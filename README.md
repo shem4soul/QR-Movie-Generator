@@ -36,5 +36,6 @@ npm run start
 
 🌐 Live Demo
 👉 QR Movie Generator on Render
+https://qr-movie-generator.onrender.com
 
 This link opens the live backend app that generates a QR code linking to a random selection of 10 movies.
