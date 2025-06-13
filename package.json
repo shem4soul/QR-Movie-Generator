@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nest start",
     "start:dev": "nest start --watch",
-    "build": "tsc && npm run copy:json",
+    "build": "rimraf dist && tsc && npm run copy:json",
     "copy:json": "copyfiles -u 1 src/**/*.json dist",
     "format": "prettier --write \"src/**/*.ts\""
   },
