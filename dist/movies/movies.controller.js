@@ -19,21 +19,34 @@ let MoviesController = class MoviesController {
     constructor(moviesService) {
         this.moviesService = moviesService;
     }
-    getMovies(token) {
-        const movies = this.moviesService.getMoviesByToken(token);
-        return { movies };
+    getMovie(imdbID) {
+        const movie = this.moviesService.getMovieByImdbID(imdbID);
+        if (!movie) {
+            return { message: "Movie not found" };
+        }
+        return { movie };
     }
 };
 exports.MoviesController = MoviesController;
 __decorate([
-    (0, common_1.Get)(":token"),
-    (0, common_1.Render)("movies"),
-    __param(0, (0, common_1.Param)("token")),
+    (0, common_1.Get)(":imdbID"),
+    __param(0, (0, common_1.Param)("imdbID")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], MoviesController.prototype, "getMovies", null);
+], MoviesController.prototype, "getMovie", null);
 exports.MoviesController = MoviesController = __decorate([
     (0, common_1.Controller)("movies"),
     __metadata("design:paramtypes", [movies_service_1.MoviesService])
 ], MoviesController);
+// import { MoviesService } from "./movies.service";
+// @Controller("movies")
+// export class MoviesController {
+//   constructor(private readonly moviesService: MoviesService) {}
+//   @Get(":token")
+//   @Render("movies")
+//   getMovies(@Param("token") token: string) {
+//     const movies = this.moviesService.getMoviesByToken(token);
+//     return { movies };
+//   }
+// }

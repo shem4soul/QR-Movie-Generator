@@ -15,10 +15,10 @@ const movies_json_1 = __importDefault(require("./movies.json"));
 let MoviesService = class MoviesService {
     constructor() {
         this.storage = new Map();
+        this.movies = movies_json_1.default;
     }
     getRandomMovies(count) {
-        const movies = movies_json_1.default.movies;
-        const shuffled = [...movies].sort(() => 0.5 - Math.random());
+        const shuffled = [...this.movies].sort(() => 0.5 - Math.random());
         return shuffled.slice(0, count);
     }
     storeMovies(token, movies) {
@@ -27,8 +27,28 @@ let MoviesService = class MoviesService {
     getMoviesByToken(token) {
         return this.storage.get(token) || [];
     }
+    getMovieByImdbID(imdbID) {
+        return this.movies.find((movie) => movie.imdbID === imdbID);
+    }
 };
 exports.MoviesService = MoviesService;
 exports.MoviesService = MoviesService = __decorate([
     (0, common_1.Injectable)()
 ], MoviesService);
+// import { Injectable } from "@nestjs/common";
+// import data from "./movies.json";
+// @Injectable()
+// export class MoviesService {
+//   private storage = new Map<string, any[]>();
+//   getRandomMovies(count: number) {
+//     const movies = (data as any).movies;
+//     const shuffled = [...movies].sort(() => 0.5 - Math.random());
+//     return shuffled.slice(0, count);
+//   }
+//   storeMovies(token: string, movies: any[]) {
+//     this.storage.set(token, movies);
+//   }
+//   getMoviesByToken(token: string): any[] {
+//     return this.storage.get(token) || [];
+//   }
+// }
