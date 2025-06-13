@@ -33,3 +33,8 @@ bash
 Copy
 Edit
 npm run start
+
+🌐 Live Demo
+👉 QR Movie Generator on Render
+
+This link opens the live backend app that generates a QR code linking to a random selection of 10 movies.
