@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
 const qr_module_1 = require("./qr/qr.module");
 const movies_module_1 = require("./movies/movies.module");
+const app_controller_1 = require("./app.controller");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -23,5 +24,6 @@ exports.AppModule = AppModule = __decorate([
             qr_module_1.QrModule,
             movies_module_1.MoviesModule,
         ],
+        controllers: [app_controller_1.AppController],
     })
 ], AppModule);
