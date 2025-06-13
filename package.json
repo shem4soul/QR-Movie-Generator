@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nest start",
-    "start:dev": "nest start --watch",
-    "build": "rimraf dist && tsc && npm run copy:json",
-    "copy:json": "copyfiles -u 1 src/**/*.json dist",
-    "format": "prettier --write \"src/**/*.ts\""
-  },
+  "start": "nest start",
+  "start:dev": "nest start --watch",
+  "start:prod": "node dist/main.js",
+  "build": "rimraf dist && tsc && npm run copy:json",
+  "copy:json": "copyfiles -u 1 src/**/*.json dist",
+  "format": "prettier --write \"src/**/*.ts\""
+},
   "keywords": [],
   "author": "",
   "license": "ISC",

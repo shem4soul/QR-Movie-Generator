@@ -1,13 +1,35 @@
-# QR Movies App (Nest.js)
+# 🎬 QR Code Movie Generator - Nest.js Backend
 
-A simple Nest.js app that:
-- Generates a QR code every 10 seconds
-- QR links to a page with 10 random movies
-- Uses EJS templates
-- No database (data stored in-memory)
+This is a **Nest.js backend project** that generates QR codes linking to dynamically rendered pages of 10 random movies. A new QR code (and unique movie list) is generated every 10 seconds. Built for task demonstration and deployment.
 
-## Run Locally
+## 🚀 Features
+
+- ✅ QR code that links to a page displaying 10 random movies (title + image)
+- ♻️ QR regenerates every 10 seconds
+- 🎥 Uses static movie JSON as mock database (optional: switch to Postgres + Prisma)
+- 📦 Built with Nest.js and TypeScript
+- 🌍 Deployed on a public platform
+- 🧪 Ready to test with Postman or browser
+
+---
+
+## 🏁 Getting Started
+
+### 1. Clone the Repo
 
 ```bash
+git clone https://github.com/your-username/qr-movie-generator.git
+cd qr-movie-generator
+
+
+2. Install Dependencies
+bash
+Copy
+Edit
 npm install
+
+3. Start the Server
+bash
+Copy
+Edit
 npm run start
