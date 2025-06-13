@@ -1,41 +1,88 @@
-# 🎬 QR Code Movie Generator - Nest.js Backend
+🎬 QR Code Movie Generator - NestJS + Prisma Backend
+This is a full-stack-ready NestJS backend project that generates QR codes linked to dynamically created movie batches. Each QR code corresponds to a unique token representing a batch of 10 random movies stored in a PostgreSQL database using Prisma.
 
-This is a **Nest.js backend project** that generates QR codes linking to dynamically rendered pages of 10 random movies. A new QR code (and unique movie list) is generated every 10 seconds. Built for task demonstration and deployment.
+🚀 Features
+✅ Generates a QR code linking to a batch of 10 randomly selected movies.
 
-## 🚀 Features
+🔄 Generates a new QR and movie batch with every request.
 
-- ✅ QR code that links to a page displaying 10 random movies (title + image)
-- ♻️ QR regenerates every 10 seconds
-- 🎥 Uses static movie JSON as mock database (optional: switch to Postgres + Prisma)
-- 📦 Built with Nest.js and TypeScript
-- 🌍 Deployed on a public platform
-- 🧪 Ready to test with Postman or browser
+🎥 Stores and fetches movies using PostgreSQL via Prisma ORM.
 
----
+🧰 API endpoints to:
 
-## 🏁 Getting Started
+Seed movie data.
 
-### 1. Clone the Repo
+Generate new movie batches.
 
-```bash
+Retrieve movies using a batch token.
+
+🌐 Built with NestJS, TypeScript, Prisma, and PostgreSQL.
+
+🧪 Easily testable via Postman or browser.
+
+📂 Project Structure
+graphql
+Copy
+Edit
+src/
+├── movies/         # Movie logic (controllers, services)
+├── prisma/         # Prisma service (DB access)
+├── qr/             # QR code logic
+├── app.module.ts   # App entry point
+├── main.ts         # Server bootstrap
+prisma/
+├── schema.prisma   # Prisma schema
+🏁 Getting Started
+1. Clone the Repo
+bash
+Copy
+Edit
 git clone https://github.com/your-username/qr-movie-generator.git
 cd qr-movie-generator
-
-
 2. Install Dependencies
 bash
 Copy
 Edit
 npm install
+3. Set Up Prisma
+Make sure your PostgreSQL database is running, then update your .env:
 
-3. Start the Server
+ini
+Copy
+Edit
+DATABASE_URL="postgresql://<username>:<password>@localhost:5432/<db_name>?schema=public"
+Then run:
+
+bash
+Copy
+Edit
+npx prisma generate
+npx prisma migrate dev --name init
+(Optional) Seed with movie data:
+
+bash
+Copy
+Edit
+npx ts-node prisma/seed.ts
+4. Run the Server
 bash
 Copy
 Edit
 npm run start
+🧪 API Testing (via Postman)
+POST /movies/generate-batch
+➤ Generates a new movie batch and returns a token.
+
+GET /movies/batch/:token
+➤ Returns movies associated with a given token.
+
+GET /movies/:imdbID
+➤ Returns a single movie by IMDB ID.
+
+GET /qr
+➤ Displays a rendered QR code linking to the batch.
 
 🌐 Live Demo
 👉 QR Movie Generator on Render
-https://qr-movie-generator.onrender.com
 
-This link opens the live backend app that generates a QR code linking to a random selection of 10 movies.
+This opens a live NestJS backend that generates a QR code linking to a random batch of 10 movies.
