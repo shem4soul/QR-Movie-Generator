@@ -6,19 +6,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MoviesModule = void 0;
+exports.PrismaService = void 0;
 const common_1 = require("@nestjs/common");
-const movies_controller_1 = require("./movies.controller");
-const movies_service_1 = require("./movies.service");
-const prisma_module_1 = require("../prisma/prisma.module");
-let MoviesModule = class MoviesModule {
+const client_1 = require("@prisma/client");
+let PrismaService = class PrismaService extends client_1.PrismaClient {
+    async onModuleInit() {
+        await this.$connect();
+    }
+    async enableShutdownHooks(app) {
+        this.$on("beforeExit", async () => {
+            await app.close();
+        });
+    }
 };
-exports.MoviesModule = MoviesModule;
-exports.MoviesModule = MoviesModule = __decorate([
-    (0, common_1.Module)({
-        imports: [prisma_module_1.PrismaModule],
-        controllers: [movies_controller_1.MoviesController],
-        providers: [movies_service_1.MoviesService],
-        exports: [movies_service_1.MoviesService],
-    })
-], MoviesModule);
+exports.PrismaService = PrismaService;
+exports.PrismaService = PrismaService = __decorate([
+    (0, common_1.Injectable)()
+], PrismaService);

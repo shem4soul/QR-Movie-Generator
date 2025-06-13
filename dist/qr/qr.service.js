@@ -44,7 +44,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.QrService = void 0;
 const common_1 = require("@nestjs/common");
-const uuid_1 = require("uuid");
 const QRCode = __importStar(require("qrcode"));
 const movies_service_1 = require("../movies/movies.service");
 let QrService = class QrService {
@@ -52,10 +51,10 @@ let QrService = class QrService {
         this.moviesService = moviesService;
     }
     async generateQrCode() {
-        const token = (0, uuid_1.v4)();
-        const movies = this.moviesService.getRandomMovies(10);
-        this.moviesService.storeMovies(token, movies);
-        const url = `http://localhost:3000/movies/${token}`;
+        // Step 1: Create a new batch of 10 random movies and get the token
+        const { token } = await this.moviesService.createMovieBatch();
+        // Step 2: Generate a QR code for the frontend URL
+        const url = `http://localhost:3000/movies/${token}`; // change to your actual frontend route
         const qrImage = await QRCode.toDataURL(url);
         return { qrImage, token };
     }

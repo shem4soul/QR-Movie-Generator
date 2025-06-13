@@ -2,13 +2,14 @@
   "name": "qr-movie-geenrator",
   "version": "1.0.0",
   "main": "dist/main.js",
-  "scripts": {
-    "start": "nest start",
-    "start:dev": "nest start --watch",
-    "start:prod": "node dist/main.js",
-    "build": "rimraf dist && tsc && npm run copy:json",
-    "copy:json": "copyfiles -u 1 src/**/*.json dist",
-    "format": "prettier --write \"src/**/*.ts\""
+ "scripts": {
+  "start": "nest start",
+  "start:dev": "nest start --watch",
+  "start:prod": "node dist/main.js",
+  "build": "rimraf dist && tsc",
+  "seed": "ts-node prisma/seed.ts",
+  "format": "prettier --write \"src/**/*.ts\"",
+  "lint": "eslint \"src/**/*.ts\" --fix"
   },
   "keywords": [],
   "author": "",

@@ -1,36 +1,36 @@
-import { Controller, Get, Param } from "@nestjs/common";
+import { Controller, Get, Param, Post } from "@nestjs/common";
 import { MoviesService } from "./movies.service";
+import { Movie } from "../../generated/prisma";
 
 @Controller("movies")
 export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
 
-  // ✅ 1. Single movie by imdbID
+  // Get a movie by IMDb ID
   @Get(":imdbID")
-  getMovie(@Param("imdbID") imdbID: string) {
-    const movie = this.moviesService.getMovieByImdbID(imdbID);
+  async getMovie(
+    @Param("imdbID") imdbID: string
+  ): Promise<{ movie: Movie | null }> {
+    const movie = await this.moviesService.getMovieByImdbID(imdbID);
     if (!movie) {
-      return { message: "Movie not found" };
+      return { movie: null }; // or throw NotFoundException if you prefer
     }
     return { movie };
   }
 
-  // ✅ 2. Movies batch by token (used after QR code scan)
+  // Create a batch of 10 random movies and return a token
+  @Post("generate-batch")
+  async generateBatch(): Promise<{ token: string }> {
+    return this.moviesService.createMovieBatch();
+  }
+
+  // Retrieve movies by token
   @Get("batch/:token")
-  getMoviesByToken(@Param("token") token: string) {
-    const movies = this.moviesService.getMoviesByToken(token);
-    if (!movies || movies.length === 0) {
-      return { message: "No movies found for this token" };
-    }
-
-    // Optional: Return only basic info (title, poster, imdbID)
-    const simplified = movies.map((movie) => ({
-      title: movie.Title,
-      poster: movie.Poster || movie.Images?.[0] || null,
-      imdbID: movie.imdbID,
-    }));
-
-    return { movies: simplified };
+  async getBatchMovies(
+    @Param("token") token: string
+  ): Promise<{ movies: Movie[] }> {
+    const movies = await this.moviesService.getMoviesByToken(token);
+    return { movies };
   }
 }
 
