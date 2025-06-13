@@ -13,3 +13,32 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+
+model Movie {
+  id         Int           @id @default(autoincrement())
+  imdbID     String        @unique
+  title      String
+  poster     String
+  year       String?
+  rating     String?
+  plot       String?
+  batches    BatchMovie[]
+}
+
+model Batch {
+  id        Int           @id @default(autoincrement())
+  token     String        @unique
+  createdAt DateTime      @default(now())
+  movies    BatchMovie[]
+}
+
+model BatchMovie {
+  id       Int     @id @default(autoincrement())
+  batchId  Int
+  movieId  Int
+  batch    Batch   @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  movie    Movie   @relation(fields: [movieId], references: [id], onDelete: Cascade)
+
+  @@unique([batchId, movieId])
+}
