@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import * as data from "./movies.json";
+import data from "./movies.json";
+
 
 @Injectable()
 export class MoviesService {
