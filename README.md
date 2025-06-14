@@ -37,7 +37,7 @@ prisma/
 bash
 Copy
 Edit
-git clone https://github.com/your-username/qr-movie-generator.git
+git clone https://github.com/shem4soul/QR-Movie-Generator.git
 cd qr-movie-generator
 2. Install Dependencies
 bash
