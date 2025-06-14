@@ -82,7 +82,12 @@ GET /movies/:imdbID
 GET /qr
 ➤ Displays a rendered QR code linking to the batch.
 
-🌐 Live Demo
-👉 QR Movie Generator on Render
+
+
+## 🚀 Live Demo
+
+- 🖥️ App Interface: [https://qr-movie-generator.onrender.com](https://qr-movie-generator.onrender.com)
+- 📚 Swagger API Docs: [https://qr-movie-generator.onrender.com/api](https://qr-movie-generator.onrender.com/api)
+
 
 This opens a live NestJS backend that generates a QR code linking to a random batch of 10 movies.
