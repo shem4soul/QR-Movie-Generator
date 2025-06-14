@@ -2,14 +2,14 @@
   "name": "qr-movie-geenrator",
   "version": "1.0.0",
   "main": "dist/main.js",
- "scripts": {
-  "start": "nest start",
-  "start:dev": "nest start --watch",
-  "start:prod": "node dist/main.js",
-  "build": "rimraf dist && tsc",
-  "seed": "ts-node prisma/seed.ts",
-  "format": "prettier --write \"src/**/*.ts\"",
-  "lint": "eslint \"src/**/*.ts\" --fix"
+  "scripts": {
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:prod": "node dist/main.js",
+    "build": "rimraf dist && tsc",
+    "seed": "ts-node prisma/seed.ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint \"src/**/*.ts\" --fix"
   },
   "keywords": [],
   "author": "",
@@ -20,12 +20,14 @@
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.1.3",
     "@nestjs/platform-express": "^11.1.3",
+    "@nestjs/swagger": "^11.2.0",
     "@prisma/client": "^6.9.0",
     "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
     "pg": "^8.16.0",
     "qrcode": "^1.5.4",
     "rxjs": "^7.8.2",
+    "swagger-ui-express": "^5.0.1",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
