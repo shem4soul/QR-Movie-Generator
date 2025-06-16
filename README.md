@@ -1,5 +1,5 @@
 🎬 QR Code Movie Generator - NestJS + Prisma Backend
-This is a full-stack-ready NestJS backend project that generates QR codes linked to dynamically created movie batches. Each QR code corresponds to a unique token representing a batch of 10 random movies stored in a PostgreSQL database using Prisma.
+This is a NestJS backend project that generates QR codes linked to dynamically created movie batches. Each QR code corresponds to a unique token representing a batch of 10 random movies stored in a PostgreSQL database using Prisma.
 
 🚀 Features
 ✅ Generates a QR code linking to a batch of 10 randomly selected movies.
@@ -58,7 +58,6 @@ Copy
 Edit
 npx prisma generate
 npx prisma migrate dev --name init
-(Optional) Seed with movie data:
 
 bash
 Copy
